@@ -196,6 +196,25 @@
 				<test.data.csv>subjectdetails.csv</test.data.csv>
 			</properties>
 		</profile>
+		<profile>
+			<id>jenkins</id>
+			<properties>
+				<env>jenkins</env>
+				<user.email></user.email>
+				<user.username></user.username>
+				<user.password></user.password>
+				<site.url></site.url>
+				<grid2.hub>http://localhost:4444/wd/hub/</grid2.hub>
+				<!-- <grid2.hub></grid2.hub> -->
+				<browser.name>chrome</browser.name>
+				<browser.version></browser.version>
+				<browser.platform></browser.platform>
+				<product.version></product.version>
+				<browser.loadCertificate>false</browser.loadCertificate>
+				<jenkins.screenshot.folder.url></jenkins.screenshot.folder.url>
+				<test.data.csv>subjectdetails.csv</test.data.csv>
+			</properties>
+		</profile>
 	</profiles>
 
 
