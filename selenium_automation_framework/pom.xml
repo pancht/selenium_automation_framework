@@ -211,7 +211,7 @@
 				<browser.platform></browser.platform>
 				<product.version></product.version>
 				<browser.loadCertificate>false</browser.loadCertificate>
-				<jenkins.screenshot.folder.url>http://localhost:8080/me/my-views/view/all/job/SeleniumAutomationFramework/ws/selenium_automation_framework/target/screenshots/</jenkins.screenshot.folder.url>
+				<jenkins.screenshot.folder.url>http://localhost:8080/job/SeleniumAutomationFramework/ws/selenium_automation_framework/target/screenshots/</jenkins.screenshot.folder.url>
 				<test.data.csv>subjectdetails.csv</test.data.csv>
 			</properties>
 		</profile>
