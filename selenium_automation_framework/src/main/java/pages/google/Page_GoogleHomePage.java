@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import pages.google.search_result_pages.Page_GoogleSearchResult;
 import saf.essentials.Page;
+import saf.interfaces.IWaitsMillis;
 
 public class Page_GoogleHomePage extends Page implements IPage_GoogleHome{
 
@@ -16,11 +17,14 @@ public class Page_GoogleHomePage extends Page implements IPage_GoogleHome{
 	public void typeSearchText(String sSearchText) {
 		type(txtSearchField, sSearchText);
 		
+		
 	}
 
 	@Override
 	public Page_GoogleSearchResult clickButton_Search() {
-		click(btnSearchButton);
+		
+		waitForElementDisplayed(btnSearchButton);
+		findElement(btnSearchButton).click();
 		
 		return new Page_GoogleSearchResult(pageDriver);
 	}
