@@ -6,9 +6,9 @@
 		<listener class-name="saf.essentials.listeners.Listener"></listener>
 	</listeners>
 
-	<test thread-count="5" name="Regression" >
+	<test thread-count="5" name="RegressionGoogleTestSuite" >
 		<packages>
-			<package name="saf.autotests" />
+			<package name="saf.autotests.google" />
 		</packages>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -73,7 +73,7 @@ public class TestNG_SAF {
 
 	@BeforeMethod
 	public void beforeMethod() {
-		System.out.println("Inside @BeforeMethod Method");
+		//System.out.println("Inside @BeforeMethod Method");
 
 	}
 
@@ -112,33 +112,33 @@ public class TestNG_SAF {
 
 	@BeforeClass
 	public void beforeClass() {
-		System.out.println("Inside @BeforeClass Method");
+		//System.out.println("Inside @BeforeClass Method");
 	}
 
 	@AfterClass
 	public void afterClass() {
-		System.out.println("Inside @AfterClass Method");
+		//System.out.println("Inside @AfterClass Method");
 	}
 
 	@BeforeTest
 	public void beforeTest() {
-		System.out.println("Inside @BeforeTest Method");
+		//System.out.println("Inside @BeforeTest Method");
 	}
 
 	@AfterTest
 	public void afterTest() {
-		System.out.println("Inside @AfterTest Method");
+		//System.out.println("Inside @AfterTest Method");
 
 	}
 
 	@BeforeSuite
 	public void beforeSuite() {
-		System.out.println("Inside @BeforeSuite Method");
+		//System.out.println("Inside @BeforeSuite Method");
 	}
 
 	@AfterSuite
 	public void afterSuite() {
-		System.out.println("Inside @AfterSuite Method");
+		//System.out.println("Inside @AfterSuite Method");
 	}
 
 	/**

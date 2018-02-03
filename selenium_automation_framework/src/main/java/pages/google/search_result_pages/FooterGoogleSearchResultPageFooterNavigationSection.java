@@ -1,10 +1,9 @@
-package pages.searchResultPages;
+package pages.google.search_result_pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-@Deprecated
-public class FooterGoogleSearchResultPageFooterNavigationSection
+class FooterGoogleSearchResultPageFooterNavigationSection
 		extends HeaderGoogleSearchResultPageTopNavigationSection {
 
 	public FooterGoogleSearchResultPageFooterNavigationSection(WebDriver pageDriver) {

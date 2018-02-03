@@ -1,6 +1,7 @@
 package saf.testconfig;
 
-
+import pages.google.Page_GoogleHomePage;
+import pages.google.search_result_pages.Page_GoogleSearchResult;
 
 /**
  TestBase class is going to be Superclass for all test-case classes
@@ -15,7 +16,9 @@ package saf.testconfig;
  */
 public class TestBase extends TestNG_SAF {
 
-	// Declare All Pages here
+	// Declare All Project Pages here
 		
+	protected Page_GoogleHomePage page_GoogleHomePage = null;
 	
+	protected Page_GoogleSearchResult page_GoogleSearchResult = null;
 }

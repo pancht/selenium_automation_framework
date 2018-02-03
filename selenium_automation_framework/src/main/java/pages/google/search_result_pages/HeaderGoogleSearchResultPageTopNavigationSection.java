@@ -1,12 +1,11 @@
-package pages.searchResultPages;
+package pages.google.search_result_pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import saf.essentials.Page;
 
-@Deprecated
-public class HeaderGoogleSearchResultPageTopNavigationSection extends Page {
+class HeaderGoogleSearchResultPageTopNavigationSection extends Page {
 
 	public HeaderGoogleSearchResultPageTopNavigationSection(WebDriver pageDriver) {
 		super(pageDriver);

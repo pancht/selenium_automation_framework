@@ -28,7 +28,7 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 	@Override
 	public void onStart(ISuite arg0) {
 
-		Reporter.log("About to begin executing Suite " + arg0.getName(), true);
+		//Reporter.log("About to begin executing Suite " + arg0.getName(), true);
 
 	}
 
@@ -37,7 +37,7 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 	@Override
 	public void onFinish(ISuite arg0) {
 
-		Reporter.log("About to end executing Suite " + arg0.getName(), true);
+		//Reporter.log("About to end executing Suite " + arg0.getName(), true);
 
 	}
 
@@ -47,7 +47,7 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 	@Override
 	public void onStart(ITestContext arg0) {
 
-		Reporter.log("About to begin executing Test " + arg0.getName(), true);
+		//Reporter.log("About to begin executing Test " + arg0.getName(), true);
 
 	}
 
@@ -57,7 +57,7 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 	@Override
 	public void onFinish(ITestContext arg0) {
 
-		Reporter.log("Completed executing test " + arg0.getName(), true);
+		//Reporter.log("Completed executing test " + arg0.getName(), true);
 
 	}
 
@@ -68,7 +68,7 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 
 		// This is calling the printTestResults method
 
-		printTestResults(arg0);
+		//printTestResults(arg0);
 
 	}
 
@@ -79,7 +79,7 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 
 		// This is calling the printTestResults method
 
-		printTestResults(arg0);
+		//printTestResults(arg0);
 
 	}
 
@@ -89,7 +89,7 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 	@Override
 	public void onTestStart(ITestResult arg0) {
 
-		System.out.println("The execution of the main test starts now");
+		//System.out.println("The execution of the main test starts now");
 
 	}
 
@@ -99,7 +99,7 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 	@Override
 	public void onTestSkipped(ITestResult arg0) {
 
-		printTestResults(arg0);
+		//printTestResults(arg0);
 
 	}
 
@@ -187,7 +187,7 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 
 		String textMsg = "About to begin executing following method : " + returnMethodName(arg0.getTestMethod());
 
-		Reporter.log(textMsg, true);
+		//Reporter.log(textMsg, true);
 
 	}
 
@@ -199,7 +199,7 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 
 		String textMsg = "Completed executing following method : " + returnMethodName(arg0.getTestMethod());
 
-		Reporter.log(textMsg, true);
+		//Reporter.log(textMsg, true);
 
 	}
 
