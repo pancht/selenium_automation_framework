@@ -5,8 +5,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 
-import pages.PageOrderForm;
-
 public class Page  extends ConfigurationProjectSpecific{
 
 	public Page(WebDriver pageDriver) {
