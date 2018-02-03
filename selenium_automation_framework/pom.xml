@@ -1,0 +1,209 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>SAFe</groupId>
+  <artifactId>selenium_automation_framework</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>selenium_automation_framework</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<version.selenium-java>3.7.1</version.selenium-java>
+		<version.testng>6.8</version.testng>
+		<version.maven-compiler-plugin>3.7.0</version.maven-compiler-plugin>
+		<version.maven-surefire-plugin>2.20.1</version.maven-surefire-plugin>
+		<version.jdk>1.8</version.jdk>
+		<version.htmlunit-driver>2.29.0</version.htmlunit-driver>
+		<version.poi>3.17</version.poi>
+		<version.poi-ooxml>3.17</version.poi-ooxml>
+		<version.commons-csv>1.5</version.commons-csv>
+	</properties>
+
+
+
+	<dependencies>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${version.selenium-java}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${version.testng}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>htmlunit-driver</artifactId>
+			<version>${version.htmlunit-driver}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${version.poi}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${version.poi-ooxml}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-csv</artifactId>
+			<version>${version.commons-csv}</version>
+		</dependency>
+
+
+	</dependencies>
+
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.0.2</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${version.maven-compiler-plugin}</version>
+				<configuration>
+					<source>${version.jdk}</source>
+					<target>${version.jdk}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${version.maven-surefire-plugin}</version>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+					</suiteXmlFiles>
+				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>org.testng.TestNG</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
+			</plugin>
+
+			
+		</plugins>
+
+
+
+	</build>
+
+	<!-- ####SUPPORTED PROFILE PROPERTIES### 1. (env) Environment 2. user.email 
+		- User email if required in tests 3. user.username - User name if required 
+		in tests 4. user.password - User password 5. site.url - URL of AUT ( Web 
+		Application Under Test ) 6. grid2.hub - URL of Selenium Grid Pattern:. http://<host>:<hub_port>/wd/hub/ 
+		Example: http://localhost:4444/wd/hub/ 7. browser.name - Target Browser name 
+		on which tests are expected to run ###SUPPORTED BROWSER NAMES### "firefox" 
+		for FF ( Working ) "ie" for Internet Explorer ( Working ) "chrome" for Google 
+		Chrome ( Working ) "htmlunit" for Headless (In-Memory) browser ( Working 
+		) "opera" for opera "safari" for Safari ( Need node running on mac ) #NOTE: 
+		For browsers to launch, Please make sure that directory for all the drivers 
+		(chromedriver.exe, geckodriver.exe, IEDriverServer.exe, MicrosoftWebDriver.exe, 
+		operadriver.exe) should be set under System PATH variable 8. browser.platform 
+		- Target Platform on which tests are expected to run ###SUPPORTED PLATFORMS### 
+		"windows" for WINDOWS "linux" for LINUX "mac" for MAC 9. product.version 
+		- For Product version ??? 10.browser.loadCertificate - pass true, if there 
+		are any SSL Certificates needed to be loaded -->
+	<profiles>
+		<profile>
+			<id>local</id>
+			<properties>
+				<env>local</env>
+				<user.email></user.email>
+				<user.username></user.username>
+				<user.password></user.password>
+				<site.url>http://199.168.97.2/trial/order.php</site.url>
+				<!-- <grid2.hub>http://localhost:4444/wd/hub/</grid2.hub> -->
+				<grid2.hub></grid2.hub>
+				<browser.name>chrome</browser.name>
+				<browser.version></browser.version>
+				<browser.platform></browser.platform>
+				<product.version></product.version>
+				<browser.loadCertificate>false</browser.loadCertificate>
+				<jenkins.screenshot.folder.url></jenkins.screenshot.folder.url>
+				<test.data.csv>subjectdetails.csv</test.data.csv>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<env>dev</env>
+				<user.email></user.email>
+				<user.username></user.username>
+				<user.password></user.password>
+				<site.url></site.url>
+				<grid2.hub>http://localhost:4444/wd/hub/</grid2.hub>
+				<browser.name>firefox</browser.name>
+				<browser.version></browser.version>
+				<browser.platform></browser.platform>
+				<product.version></product.version>
+				<browser.loadCertificate>false</browser.loadCertificate>
+				<jenkins.screenshot.folder.url></jenkins.screenshot.folder.url>
+				<test.data.csv>subjectdetails.csv</test.data.csv>
+			</properties>
+		</profile>
+	</profiles>
+
+
+	<!--###### IMPORTANT COMMANDS ######################################################### 
+		###### mvn clean install -U -e ###### mvn javadoc:javadoc ###### mvn -Dtest=*#<IndividualTestName> 
+		test -P <ProfileId> ###### mvn -Dtest=<TestClassName>#<IndividualTestName> 
+		test -P <ProfileId> ###### mvn -DsuiteFile=<SuiteFileName> test -P <ProfileId> 
+		###### ################################################################################### -->
+
+
+</project>
