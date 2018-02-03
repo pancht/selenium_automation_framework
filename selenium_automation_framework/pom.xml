@@ -197,9 +197,9 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>jenkins</id>
+			<id>ci</id>
 			<properties>
-				<env>jenkins</env>
+				<env>ci</env>
 				<user.email></user.email>
 				<user.username></user.username>
 				<user.password></user.password>
