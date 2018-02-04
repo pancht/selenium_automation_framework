@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" >
+<suite name="Suite" parallel="classes">
 
 	<listeners>
 		<listener class-name="saf.essentials.listeners.Listener"></listener>
 	</listeners>
 
-	<test  name="RegressionGoogleTestSuite" parallel="methods" thread-count="5">
+	<test  name="RegressionGoogleTestSuite" >
 		<packages>
 			<package name="saf.autotests.google" />
 		</packages>
 	</test> <!-- Test -->
+	
+	
 </suite> <!-- Suite -->

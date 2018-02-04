@@ -10,6 +10,13 @@ import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
 
+/*************************************************************************
+ * This class contains all the action specifics related to Browser control
+ * Say, Minimize Browser, Maximize Browser, ResetBrowserPosition etc.
+ * 
+ * @author Panchdev Chauhan
+ *
+ *************************************************************************/
 public abstract class BrowserActions extends PageActionsAdvanced {
 
 	public BrowserActions(WebDriver pageDriver) {
@@ -46,6 +53,9 @@ public abstract class BrowserActions extends PageActionsAdvanced {
 		 */
 	}
 
+	/**
+	 * Maximize Browser Window
+	 */
 	public void maximizeBrowser() {
 		pageDriver.manage().window().maximize();
 		
