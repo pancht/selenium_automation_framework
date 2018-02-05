@@ -9,7 +9,15 @@ import org.testng.Reporter;
 import saf.essentials.eventHandlers.EventHandler;
 import saf.interfaces.SuperInterface;
 
-
+/************************************************************************************
+ ************************************************************************************
+ * This class contains project level global configurations and TestNG Reporting capabilities
+ * 
+ * 
+ * @author Panchdev Chauhan
+ * 
+ ************************************************************************************
+ ************************************************************************************/
 public abstract class ConfigurationAndReporting implements SuperInterface  {
 
 	public static final int WAIT_FOR_TIME_A = 2;
@@ -89,6 +97,12 @@ public abstract class ConfigurationAndReporting implements SuperInterface  {
 
 	}
 
+	/**
+	 * This method creates and returns instance of FiringWebDriver
+	 * 
+	 * @param webDriver
+	 * @return
+	 */
 	private WebDriver getEventFiringWebDriver(WebDriver webDriver) {
 		EventFiringWebDriver eventDriver = new EventFiringWebDriver(webDriver);
 		EventHandler handler = new EventHandler();
@@ -192,6 +206,10 @@ public abstract class ConfigurationAndReporting implements SuperInterface  {
 
 	}
 
+	/**
+	 * 
+	 * @param step
+	 */
 	public final void step(String step) {
 		log(step, METHOD);
 	}

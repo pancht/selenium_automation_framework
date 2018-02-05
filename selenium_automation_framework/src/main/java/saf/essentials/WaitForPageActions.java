@@ -10,8 +10,21 @@ import org.openqa.selenium.WebElement;
 
 import saf.util.CustomizedTimeOuts;
 
-public abstract class WaitForPageActions extends JavaScriptAndAjaxActions {
+/******************************************************************************
+ ******************************************************************************
+ * This class contains all Time and wait related actions
+ * Which waits for certains condition to occur
+ * 
+ * @author Panchdev Chauhan
+ ******************************************************************************
+ ******************************************************************************/
+public abstract class WaitForPageActions extends PageJavaScriptAndAjaxActions {
 
+	/**
+	 * Constructor
+	 * 
+	 * @param pageDriver
+	 */
 	public WaitForPageActions(WebDriver pageDriver) {
 		super(pageDriver);
 	
@@ -85,6 +98,14 @@ public abstract class WaitForPageActions extends JavaScriptAndAjaxActions {
 		return false;
 	}
 	
+	/**
+	 * Waits given number of seconds for by locator element untill it displayed and returns true if elment displayed
+	 * If given by locator does not display, returns false
+	 * 
+	 * @param by
+	 * @param seconds
+	 * @return
+	 */
 	public final boolean waitForElementDisplayed(By by, int seconds) {
 		for (int sec = 1; sec <= seconds; sec++) {
 			if (ENABLE_DEBUG_MESSAGES) {

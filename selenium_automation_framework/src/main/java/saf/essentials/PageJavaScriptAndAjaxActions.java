@@ -5,9 +5,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
 
-public abstract class JavaScriptAndAjaxActions extends ConfigurationAndReporting {
+/****************************************************************************************
+ ****************************************************************************************
+ * This class contains all advance Javascript based actions
+ * Which required to executed javascript snippets
+ *  
+ * @author Panchdev Chauhan
+ ****************************************************************************************
+ ****************************************************************************************/
+public abstract class PageJavaScriptAndAjaxActions extends ConfigurationAndReporting {
 
-	public JavaScriptAndAjaxActions(WebDriver pageDriver) {
+	/**
+	 * Construtor
+	 * 
+	 * @param pageDriver
+	 */
+	public PageJavaScriptAndAjaxActions(WebDriver pageDriver) {
 		super(pageDriver);
 		
 	}

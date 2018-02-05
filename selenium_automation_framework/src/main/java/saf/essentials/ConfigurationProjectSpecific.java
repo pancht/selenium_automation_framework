@@ -6,6 +6,13 @@ import org.openqa.selenium.WebDriver;
 
 import saf.util.PropertyLoader;
 
+/*******************************************************************************
+ *******************************************************************************
+ * This class contains Project Specific configurations 
+ *  
+ * @author Panchdev Chauhan
+ *******************************************************************************
+ *******************************************************************************/
 public abstract class ConfigurationProjectSpecific extends PageActionsProjectSpecific {
 
 	public static String SITE_URL = PropertyLoader.loadProperty("site.url");
@@ -17,6 +24,11 @@ public abstract class ConfigurationProjectSpecific extends PageActionsProjectSpe
 			+ PATH_SEPARATOR + "src" + PATH_SEPARATOR + "test" + PATH_SEPARATOR + "resources" + PATH_SEPARATOR
 			+ "bpo_asset_orders_edit_form_subject_history_tab_form_fillUp_test_data.csv";
 
+	/**
+	 * Constructor 
+	 * 
+	 * @param pageDriver
+	 */
 	public ConfigurationProjectSpecific(WebDriver pageDriver) {
 		super(pageDriver);
 
