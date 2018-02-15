@@ -23,6 +23,8 @@ import org.openqa.selenium.safari.SafariOptions;
 import saf.util.*;
 
 /*
+ * https://github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities
+ * 
  * Factory to instantiate a WebDriver object. 
  * It returns an instance of the driver (local invocation)
  * or 
