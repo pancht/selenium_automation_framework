@@ -11,8 +11,19 @@ import org.openqa.selenium.support.ui.Select;
 
 import saf.util.CustomizedTimeOuts;
 
+/**
+ * This class contains methods to perform advanced page actions
+ * 
+ * @author Panchdev Chauhan
+ *
+ */
 public abstract class PageActionsAdvanced extends PageActions {
 
+	/**
+	 * Constructor
+	 * 
+	 * @param pageDriver
+	 */
 	public PageActionsAdvanced(WebDriver pageDriver) {
 		super(pageDriver);
 	}
@@ -53,6 +64,14 @@ public abstract class PageActionsAdvanced extends PageActions {
 		}
 	}
 	
+	/**
+	 * This drags pageElement represented by GivenByLocator 
+	 * And drops at Point(xOffset,yOffset) in Browser View
+	 * 
+	 * @param source GivenByLocator for pageElement
+	 * @param xOffset 
+	 * @param yOffset
+	 */
 	public final void dragAndDropBy(By source, int xOffset, int yOffset) {
 		for (int trial = 1; trial <= WAIT_FOR_TIME_0; trial++) {
 			try {
@@ -66,6 +85,14 @@ public abstract class PageActionsAdvanced extends PageActions {
 		}
 	}
 	
+	/**
+	 * This drags pageElement represented by GivenWebElementLocator 
+	 * And drops at Point(xOffset,yOffset) in Browser View
+	 * 
+	 * @param source GivenWebElementLocator for pageElement
+	 * @param xOffset
+	 * @param yOffset
+	 */
 	public final void dragAndDropBy(WebElement source, int xOffset, int yOffset) {
 		for (int trial = 1; trial <= WAIT_FOR_TIME_0; trial++) {
 			try {
@@ -138,6 +165,11 @@ public abstract class PageActionsAdvanced extends PageActions {
 		}
 	}
 
+	/**
+	 * This method performs Double click on pageElement represented by GivenWebElementLocator
+	 * 
+	 * @param element GivenWebElementLocator
+	 */
 	public final void doubleClickQuickest(WebElement element) {
 		Actions action = new Actions(pageDriver);
 		action.moveToElement(element).doubleClick().build().perform();
@@ -233,19 +265,43 @@ public abstract class PageActionsAdvanced extends PageActions {
 		}
 	}
 
+	/**
+	 * This method returns First selected option in list/drop-down represented by GivenByLocator
+	 * 
+	 * @param by GivenByLocator
+	 * @return First selected option in list/drop-down if there more than 0 option else throws NoSuchElement Exception
+	 */
 	public String getFirstSelectedOption(By by) {
 		return getFirstSelectedOption(element(by));
 	}
 
+	/**
+	 * This method returns First selected option in list/drop-down represented by GivenWebElementLocator
+	 * 
+	 * @param element GivenWebElementLocator
+	 * @return First selected option in list/drop-down if there more than 0 option else throws NoSuchElement Exception
+	 */
 	public String getFirstSelectedOption(WebElement element) {
 		Select select = new Select(element);
 		return select.getFirstSelectedOption().getText();
 	}
 
+	/**
+	 * This method returns ALL selected option in list/drop-down represented by GivenByLocator
+	 * 
+	 * @param by GivenByLocator
+	 * @return ALL selected option(s) in list/drop-down if there more than 0 option selected else throws NoSuchElement Exception
+	 */
 	public List<WebElement> getAllSelectedOptions(By by) {
 		return getAllSelectedOptions(element(by));
 	}
 
+	/**
+	 * This method returns ALL selected option in list/drop-down represented by GivenWebElementLocator
+	 * 
+	 * @param element GivenWebElementLocator
+	 * @return ALL selected option(s) in list/drop-down if there more than 0 option selected else throws NoSuchElement Exception
+	 */
 	public List<WebElement> getAllSelectedOptions(WebElement element) {
 		Select select = new Select(element);
 		return select.getAllSelectedOptions();
@@ -307,13 +363,24 @@ public abstract class PageActionsAdvanced extends PageActions {
 	}
 	
 
+	/**
+	 * This method selects GivenOption for radio represented by GivenByLocator
+	 * 
+	 * @param by GivenByLocator 
+	 * @param sValue GivenOption
+	 */
 	public void selectRadioOption(By by,String sValue) {
 		List<WebElement>  oRadioButton = pageDriver.findElements(by);
 		
 		selectRadioOption(oRadioButton, sValue);
 	}
 	
-	
+	/**
+	 * This method selects GivenOption(s) for radio represented by GivenByLocator
+	 * 
+	 * @param oRadioOptions GivenByLocator
+	 * @param sValue
+	 */
 	public void selectRadioOption(List<WebElement> oRadioOptions, String sValue) {
 		for (WebElement option : oRadioOptions) {
 			if ( option.getAttribute("value").trim().equals(sValue) ) {

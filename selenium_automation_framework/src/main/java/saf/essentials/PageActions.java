@@ -3,19 +3,25 @@ package saf.essentials;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Reporter;
-
-import com.gargoylesoftware.htmlunit.javascript.host.media.webkitMediaStream;
 
 import saf.util.CustomizedTimeOuts;
 
+/**
+ * 
+ * @author Panchdev Chauhan
+ *
+ */
 public abstract class PageActions extends WaitForPageActions{
 
+	/**
+	 * Constructor
+	 * 
+	 * @param pageDriver
+	 */
 	public PageActions(WebDriver pageDriver) {
 		super(pageDriver);
 	}
@@ -86,6 +92,8 @@ public abstract class PageActions extends WaitForPageActions{
 	public String getText(WebElement element) {
 		return element.getText();
 	}
+	
+	
 	/**
 	 * Types in given text in text field
 	 * 
@@ -109,6 +117,12 @@ public abstract class PageActions extends WaitForPageActions{
 		}
 	}
 
+	/**
+	 * Type in Given Text in Given PageElement
+	 * 
+	 * @param element Given PageElement
+	 * @param Given Text
+	 */
 	public final void type(WebElement element, String text) {
 		try {
 			//highlightElement(getWebDriver(), element);
@@ -273,6 +287,12 @@ public abstract class PageActions extends WaitForPageActions{
 		}
 	}
 
+	/**
+	 * This method checks whether PageElement represented by Given By locator is being displayed on Page or Not
+	 * 
+	 * @param by Given By Locator for PageElement
+	 * @return true if displayed else returns false
+	 */
 	public boolean isElementDisplayed(By by) {
 		
 			try {
@@ -284,35 +304,43 @@ public abstract class PageActions extends WaitForPageActions{
 		
 		return false;
 	}
+		
 	
-	public String getBrowserVersion() {
-		Capabilities capabilities = ((RemoteWebDriver) getWebDriver()).getCapabilities();
-		return capabilities.getVersion();
-	}
-
-	public String getBrowserName() {
-		Capabilities capabilities = ((RemoteWebDriver) getWebDriver()).getCapabilities();
-		return capabilities.getBrowserName();
-	}
-
-	public String getPlatform() {
-		Capabilities capabilities = ((RemoteWebDriver) getWebDriver()).getCapabilities();
-		return capabilities.getPlatform().name();
-	}
-	
-	
+	/**
+	 * This method checks if PageElement represented by GivenByLocator is selected/checked
+	 * 
+	 * @param by GivenByLocator For PageElement
+	 * 
+	 * @return True if PageElement is selected/checked already Else returns false
+	 */
 	public boolean isChecked(By by) {
 		return isChecked(findElement(by));
 	}
 	
+	/**
+	 * This method checks if PageElement represented by GivenWebElementLocator is selected/checked
+	 * 
+	 * @param element GivenWebElementLocator For PageElement
+	 * @return True if PageElement is selected/checked already Else returns false
+	 */
 	public boolean isChecked(WebElement element) {
 		return element.isSelected();
 	}
 
+	/**
+	 * This method checks/selects PageElement represented by GivenByLocator
+	 * 
+	 * @param by GivenByLocator For PageElement
+	 */
 	public void checkCheckbox(By by) {
 		checkCheckbox(findElement(by));
 	}
 	
+	/**
+	 * This method checks/selects PageElement represented by GivenWebElementLocator
+	 * 
+	 * @param element GivenWebElementLocator For PageElement
+	 */
 	public void checkCheckbox(WebElement element) {
 		element.click();
 	}

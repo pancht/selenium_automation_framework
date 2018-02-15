@@ -103,6 +103,7 @@ public abstract class ConfigurationAndReporting implements SuperInterface  {
 	 * @param webDriver
 	 * @return
 	 */
+	@SuppressWarnings("unused")
 	private WebDriver getEventFiringWebDriver(WebDriver webDriver) {
 		EventFiringWebDriver eventDriver = new EventFiringWebDriver(webDriver);
 		EventHandler handler = new EventHandler();

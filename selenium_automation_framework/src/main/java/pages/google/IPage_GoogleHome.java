@@ -4,6 +4,12 @@ import org.openqa.selenium.By;
 
 import pages.google.search_result_pages.Page_GoogleSearchResult;
 
+/**
+ * This interface defines page elements and element actions on GoogleHomePage
+ * 
+ * @author Panchdev Chauhan
+ *
+ */
 public interface IPage_GoogleHome {
 
 	/**

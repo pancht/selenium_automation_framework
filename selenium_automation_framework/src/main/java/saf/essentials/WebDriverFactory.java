@@ -1,7 +1,6 @@
 package saf.essentials;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 
 import org.openqa.selenium.Platform;
@@ -53,6 +52,10 @@ public class WebDriverFactory {
 	public static final String MAC = "mac";
 	public static final String LINUX = "linux";
 
+	/**
+	 * Constructor
+	 * 
+	 */
 	private WebDriverFactory() {
 	}
 
@@ -283,6 +286,7 @@ public class WebDriverFactory {
 	/*
 	 * Helper method to set ChromeDriver location into the right ststem property
 	 */
+	@SuppressWarnings("unused")
 	private final static void setChromeDriver() {
 
 		String os = System.getProperty("os.name").toLowerCase().substring(0, 3);
@@ -292,6 +296,7 @@ public class WebDriverFactory {
 		System.setProperty("webdriver.chrome.driver", chromeBinary);
 	}
 
+	@SuppressWarnings("unused")
 	private static void isSupportedPlatform(String browser) {
 
 		boolean is_supported = true;
@@ -335,6 +340,7 @@ public class WebDriverFactory {
 
 	}
 	
+	@SuppressWarnings("unused")
 	private static SafariOptions getSafariOptions() {
 		
 		SafariOptions safariOptions = new SafariOptions();

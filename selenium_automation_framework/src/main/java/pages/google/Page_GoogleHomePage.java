@@ -1,14 +1,24 @@
 package pages.google;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pages.google.search_result_pages.Page_GoogleSearchResult;
 import saf.essentials.Page;
-import saf.interfaces.IWaitsMillis;
 
+/**
+ * This class represent PageObject For GoogleHomePage
+ * It implements IPage_GoogleHome interface 
+ * 
+ * @author Panchdev Chauhan
+ *
+ */
 public class Page_GoogleHomePage extends Page implements IPage_GoogleHome{
 
+	/**
+	 * Constructor 
+	 * 
+	 * @param pageDriver
+	 */
 	public Page_GoogleHomePage(WebDriver pageDriver) {
 		super(pageDriver);
 	}
@@ -16,8 +26,6 @@ public class Page_GoogleHomePage extends Page implements IPage_GoogleHome{
 	@Override
 	public void typeSearchText(String sSearchText) {
 		type(txtSearchField, sSearchText);
-		
-		
 	}
 
 	@Override

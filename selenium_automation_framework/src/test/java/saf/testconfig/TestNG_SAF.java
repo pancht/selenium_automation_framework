@@ -154,14 +154,19 @@ public class TestNG_SAF {
 		new PropertyLoader();
 		// Load values from property file
 		String environment = PropertyLoader.loadProperty("env");
+		@SuppressWarnings("unused")
 		String useremail = PropertyLoader.loadProperty("user.email");
+		@SuppressWarnings("unused")
 		String username = PropertyLoader.loadProperty("user.username");
+		@SuppressWarnings("unused")
 		String password = PropertyLoader.loadProperty("user.password");
+		@SuppressWarnings("unused")
 		String websiteUrl = PropertyLoader.loadProperty("site.url");
 		String gridHubUrl = PropertyLoader.loadProperty("grid2.hub");
 		String browserName = PropertyLoader.loadProperty("browser.name");
 		String browserVersion = PropertyLoader.loadProperty("browser.version");
 		String browserPlatform = PropertyLoader.loadProperty("browser.platform");
+		@SuppressWarnings("unused")
 		String productVersion = PropertyLoader.loadProperty("product.version");
 		String loadCertificate = PropertyLoader.loadProperty("browser.loadCertificate");
 
@@ -221,6 +226,7 @@ public class TestNG_SAF {
 
 	}
 	
+	@SuppressWarnings("unused")
 	private WebDriver getEventFiringWebDriver(WebDriver webDriver) {
 		EventFiringWebDriver eventDriver = new EventFiringWebDriver(webDriver);
 		EventHandler handler = new EventHandler();

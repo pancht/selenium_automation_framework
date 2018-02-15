@@ -21,6 +21,12 @@ import org.testng.Reporter;
 import saf.util.CustomizedString;
 import saf.util.PropertyLoader;
 
+/**
+ * This class implements ITestListener, ISuiteListener, IInvokedMethodListener
+ * 
+ * @author Panchdev Chauhan
+ *
+ */
 public class Listener implements ITestListener, ISuiteListener, IInvokedMethodListener {
 
 	// This belongs to ISuiteListener and will execute before the Suite start
@@ -114,6 +120,7 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 
 	// This will provide the information on the test
 
+	@SuppressWarnings("unused")
 	private void printTestResults(ITestResult result) {
 
 		Reporter.log("Test Method resides in " + result.getTestClass().getName(), true);
@@ -185,6 +192,7 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 	@Override
 	public void beforeInvocation(IInvokedMethod arg0, ITestResult arg1) {
 
+		@SuppressWarnings("unused")
 		String textMsg = "About to begin executing following method : " + returnMethodName(arg0.getTestMethod());
 
 		//Reporter.log(textMsg, true);
@@ -197,6 +205,7 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 	@Override
 	public void afterInvocation(IInvokedMethod arg0, ITestResult arg1) {
 
+		@SuppressWarnings("unused")
 		String textMsg = "Completed executing following method : " + returnMethodName(arg0.getTestMethod());
 
 		//Reporter.log(textMsg, true);

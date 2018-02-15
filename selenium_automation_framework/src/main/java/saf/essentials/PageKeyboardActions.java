@@ -15,6 +15,11 @@ import org.openqa.selenium.interactions.Actions;
  ************************************************************************************/
 public abstract class PageKeyboardActions extends BrowserActions {
 
+	/**
+	 * Constructor
+	 * 
+	 * @param pageDriver
+	 */
 	public PageKeyboardActions(WebDriver pageDriver) {
 		super(pageDriver);
 

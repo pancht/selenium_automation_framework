@@ -35,6 +35,11 @@ public abstract class ConfigurationProjectSpecific extends PageActionsProjectSpe
 	}
 
 	public static Hashtable<Integer, String> File_headers = new Hashtable<Integer, String>() {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		{
 			put(0, "Street Number");
 			put(1, "Street Name");
@@ -85,6 +90,11 @@ public abstract class ConfigurationProjectSpecific extends PageActionsProjectSpe
 	};
 
 	public static Hashtable<Integer, String> File_Headers_BPO_Asset_Orders_Edit_Form_Subject_History_Tab_Form_FillUp_Test_Data = new Hashtable<Integer, String>() {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		{
 			put(0, "Listed in last 12 months:");
 			put(1, "Currently Listed:");

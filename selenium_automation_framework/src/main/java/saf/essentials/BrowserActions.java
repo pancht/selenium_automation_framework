@@ -3,12 +3,14 @@ package saf.essentials;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 /*************************************************************************
  * This class contains all the action specifics related to Browser control
@@ -61,6 +63,36 @@ public abstract class BrowserActions extends PageActionsAdvanced {
 		
 	}
 	
+	/**
+	 * Get Browser version 
+	 * 
+	 * @return Browser Version
+	 */
+	public String getBrowserVersion() {
+		Capabilities capabilities = ((RemoteWebDriver) getWebDriver()).getCapabilities();
+		return capabilities.getVersion();
+	}
+
+	/**
+	 * Get Browser Name
+	 * 
+	 * @return Browser Name
+	 */
+	public String getBrowserName() {
+		Capabilities capabilities = ((RemoteWebDriver) getWebDriver()).getCapabilities();
+		return capabilities.getBrowserName();
+	}
+
+	/**
+	 * Get Platform
+	 * 
+	 * @return Platform
+	 */
+	public String getPlatform() {
+		Capabilities capabilities = ((RemoteWebDriver) getWebDriver()).getCapabilities();
+		return capabilities.getPlatform().name();
+	}
+
 	
 	/**
 	 * Analyze browser console logs (warning and error)

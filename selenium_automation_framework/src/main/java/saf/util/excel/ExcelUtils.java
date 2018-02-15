@@ -19,6 +19,7 @@ public class ExcelUtils {
 
 	private static XSSFCell Cell;
 
+	@SuppressWarnings("unused")
 	private static XSSFRow Row;
 
 	public static Object[][] getTableArray(String FilePath, String SheetName) throws Exception {
@@ -89,6 +90,7 @@ public class ExcelUtils {
 
 	}
 
+	@SuppressWarnings("deprecation")
 	public static String getCellData(int RowNum, int ColNum) throws Exception {
 
 		try {

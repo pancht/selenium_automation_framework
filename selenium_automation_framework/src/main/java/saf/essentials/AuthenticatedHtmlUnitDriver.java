@@ -7,6 +7,11 @@ import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.DefaultCredentialsProvider;
 import com.gargoylesoftware.htmlunit.WebClient;
 
+/**
+ * 
+ * @author Panchdev Chauhan
+ *
+ */
 public class AuthenticatedHtmlUnitDriver extends HtmlUnitDriver {
 	
 	private static String USERNAME;

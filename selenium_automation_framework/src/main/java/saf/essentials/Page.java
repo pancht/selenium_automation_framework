@@ -5,8 +5,21 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 
+/**
+ * This class is very important in Selenium Automation Framework [ SAF ]
+ * Every PageObject will be direct or indirect decendent of this class.
+ * Means every PageObject will extend this class.
+ *  
+ * @author Panchdev Chauhan
+ *
+ */
 public class Page  extends ConfigurationProjectSpecific{
 
+	/**
+	 * Constructor 
+	 * 
+	 * @param pageDriver
+	 */
 	public Page(WebDriver pageDriver) {
 		super(pageDriver);
 		
@@ -24,25 +37,25 @@ public class Page  extends ConfigurationProjectSpecific{
 	
 	@Override
 	public Object goBack() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public Object goBack(String pageName) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public String getPageTitle() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public void verifyPageUI() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 	
