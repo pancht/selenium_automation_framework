@@ -14,7 +14,7 @@ import pages.google.search_result_pages.Page_GoogleSearchResult;
  * @author Panchdev Chauhan
  *
  */
-public class TestBase extends TestNG_SAF {
+public class TestBase extends DataProviders {
 
 	// Declare All Project Pages here
 		
