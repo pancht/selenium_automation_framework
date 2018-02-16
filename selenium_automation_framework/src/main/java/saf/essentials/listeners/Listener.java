@@ -18,6 +18,7 @@ import org.testng.ITestResult;
 
 import org.testng.Reporter;
 
+import saf.interfaces.IValues;
 import saf.util.CustomizedString;
 import saf.util.PropertyLoader;
 
@@ -74,7 +75,7 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 
 		// This is calling the printTestResults method
 
-		//printTestResults(arg0);
+		printTestResults(arg0);
 
 	}
 
@@ -85,7 +86,7 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 
 		// This is calling the printTestResults method
 
-		//printTestResults(arg0);
+		printTestResults(arg0);
 
 	}
 
@@ -125,18 +126,13 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 
 		Reporter.log("Test Method resides in " + result.getTestClass().getName(), true);
 
-		if (result.getParameters().length != 0) {
-
-			String params = null;
-
-			for (Object parameter : result.getParameters()) {
-
-				params += parameter.toString() + ",";
-
-			}
-
-			Reporter.log("Test Method had the following parameters : " + params, true);
-
+		Object[] parameters = result.getParameters();
+		String sScreenshotName = null ;
+		
+		if( parameters != null ) {
+			sScreenshotName = result.getName().concat(parameters[0].toString()).replace("@", IValues.EMPTY_STRING).replace(".", IValues.EMPTY_STRING);
+		} else {
+			sScreenshotName = result.getName();
 		}
 
 		String status = null;
@@ -153,7 +149,6 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 
 			@SuppressWarnings("unused")
 			String iRandomString = CustomizedString.generateString(11);
-			String screenshot_name = result.getName();
 
 			status = "Failed";
 
@@ -165,13 +160,13 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 			if (PropertyLoader.loadProperty("env").contains("ci")) {
 
 				Reporter.log("<br/><font color='red'>Failing page screenshot: </font> " + "<a href='"
-						+ PropertyLoader.loadProperty("jenkins.screenshot.folder.url") + screenshot_name + ".png'>"
-						+ screenshot_name + "</a>");
+						+ PropertyLoader.loadProperty("jenkins.screenshot.folder.url") + sScreenshotName + ".png'>"
+						+ sScreenshotName + "</a>");
 
 			} else {
 
 				Reporter.log("<br/><font color='red'>Failing page screenshot: </font> <a href='../screenshots/"
-						+ screenshot_name + ".png'>" + screenshot_name + "</a>");
+						+ sScreenshotName + ".png'>" + sScreenshotName + "</a>");
 			}
 
 			break;

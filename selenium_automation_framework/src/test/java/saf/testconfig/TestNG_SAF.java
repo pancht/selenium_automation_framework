@@ -25,9 +25,11 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 
+
 import saf.essentials.WebDriverFactory;
 import saf.essentials.eventHandlers.EventHandler;
 import saf.interfaces.IFlags;
+import saf.interfaces.IValues;
 import saf.util.CustomizedBrowser;
 import saf.util.PropertyLoader;
 
@@ -93,13 +95,22 @@ public class TestNG_SAF {
 	public void afterMethodTakeScreenshotIfTestFailedAndCleanUpIfRequired(ITestResult result) {
 		// System.out.println("Inside @AfterMethod Method");
 
+		Object[] parameters = result.getParameters();
+		String sScreenshotName = null ;
+		
+		if( parameters != null ) {
+			sScreenshotName = result.getName().concat(parameters[0].toString()).replace("@", IValues.EMPTY_STRING).replace(".", IValues.EMPTY_STRING);
+		} else {
+			sScreenshotName = result.getName();
+		}
+		
 		try {
 			if (!result.isSuccess()) {
 				if (pageDriver != null) {
 					try {
 						File f = ((TakesScreenshot) pageDriver).getScreenshotAs(OutputType.FILE);
 						FileUtils.copyFile(f,
-								new File(SCREENSHOT_FOLDER + result.getName() + SCREENSHOT_FORMAT).getAbsoluteFile());
+								new File(SCREENSHOT_FOLDER + sScreenshotName + SCREENSHOT_FORMAT).getAbsoluteFile());
 					} catch (Throwable e) {
 
 					}
@@ -114,7 +125,7 @@ public class TestNG_SAF {
 			} catch (Throwable e) {
 			}
 		}
-		Reporter.log("Screenshot:[" + result.getName() + SCREENSHOT_FORMAT + "]");
+		Reporter.log("Screenshot:[" + sScreenshotName + SCREENSHOT_FORMAT + "]");
 	}
 
 	@DataProvider
