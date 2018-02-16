@@ -98,7 +98,7 @@ public class TestNG_SAF {
 		Object[] parameters = result.getParameters();
 		String sScreenshotName = null ;
 		
-		if( parameters != null ) {
+		if( parameters.length >0 ) {
 			sScreenshotName = result.getName().concat(parameters[0].toString()).replace("@", IValues.EMPTY_STRING).replace(".", IValues.EMPTY_STRING);
 		} else {
 			sScreenshotName = result.getName();
@@ -245,7 +245,7 @@ public class TestNG_SAF {
 				if (gridHubUrl == null || gridHubUrl.length() == 0) {
 					System.out.println("Launch local firefox driver");
 					DesiredCapabilities cap = DesiredCapabilities.firefox();
-					cap.setCapability(CapabilityType.PROXY, proxy);
+					//cap.setCapability(CapabilityType.PROXY, proxy);
 					newPage = new FirefoxDriver(cap);
 					
 				} else {

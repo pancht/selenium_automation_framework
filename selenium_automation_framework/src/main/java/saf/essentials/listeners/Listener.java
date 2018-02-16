@@ -129,7 +129,7 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 		Object[] parameters = result.getParameters();
 		String sScreenshotName = null ;
 		
-		if( parameters != null ) {
+		if( parameters.length >0 ) {
 			sScreenshotName = result.getName().concat(parameters[0].toString()).replace("@", IValues.EMPTY_STRING).replace(".", IValues.EMPTY_STRING);
 		} else {
 			sScreenshotName = result.getName();
