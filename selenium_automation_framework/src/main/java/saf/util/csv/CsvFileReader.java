@@ -18,36 +18,31 @@ import org.apache.commons.csv.CSVRecord;
 public class CsvFileReader {
 
 	/**
-	 * Reads in Given Excel csv file and perfomrs following operations
-	 * 1. Removes Header from Excel CSV file
-	 * 2. Returns rest of the CSV Records 
+	 * Read GivenExcelCsvFile and return CsvRecords with removing header 
 	 * 
 	 * @param pathExcelCsv
-	 * @return Iterable<CSVRecord>
-	 * @throws FileNotFoundException 
+	 * @return
 	 */
-	public static Iterable<CSVRecord> getCSVRecordsExcludingHeaderFromExcelCsv(String pathExcelCsv) throws FileNotFoundException {
-		
+	public static Iterable<CSVRecord> readExcelCsvFile(String pathExcelCsv) {
 		Reader in = null;
-		
-		try { // Error Handling Block To Detect java.io.FileNotFoundException
-			  // While trying to Open a File Which does not exists at all.
-			
-			// Create a java.io.FileReader Instance From Given FilePath
-			in = new FileReader(pathExcelCsv);
-			
-		} finally {		}
-
-		
-		Iterable<CSVRecord> records = null;
 		try {
-			// Remove Header From Excel Csv File
-			records = CSVFormat.EXCEL.withFirstRecordAsHeader().parse(in);
-		} catch (IOException e) {
-			e.printStackTrace(System.out);
+			in = new FileReader(pathExcelCsv);
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 
-		return records; //Return reference to CSVRecords Excluding Header Record
-	}
+		Iterable<CSVRecord> records = null;
+		try {
+			// records = CSVFormat.EXCEL.parse(in);
+			records = CSVFormat.EXCEL.withFirstRecordAsHeader().parse(in);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
+		return records;
+	}
+	
+	
 }
