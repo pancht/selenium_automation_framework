@@ -5,9 +5,11 @@ import java.net.URL;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
@@ -46,6 +48,16 @@ public class TestNG_SAF {
 	protected WebDriver pageDriver = null;
 
 	/**
+	 * URL of website under test
+	 */
+	protected String sWebsiteUrl =null;
+	
+	/**
+	 * Proxy URL
+	 */
+	static String HTTP_PROXY_URL = null;
+	
+	/**
 	 * Screenshot folder
 	 */
 	public static final String SCREENSHOT_FOLDER = "target/screenshots/";
@@ -73,7 +85,7 @@ public class TestNG_SAF {
 
 	@BeforeMethod
 	public void beforeMethod() {
-		//System.out.println("Inside @BeforeMethod Method");
+		// System.out.println("Inside @BeforeMethod Method");
 
 	}
 
@@ -112,33 +124,33 @@ public class TestNG_SAF {
 
 	@BeforeClass
 	public void beforeClass() {
-		//System.out.println("Inside @BeforeClass Method");
+		// System.out.println("Inside @BeforeClass Method");
 	}
 
 	@AfterClass
 	public void afterClass() {
-		//System.out.println("Inside @AfterClass Method");
+		// System.out.println("Inside @AfterClass Method");
 	}
 
 	@BeforeTest
 	public void beforeTest() {
-		//System.out.println("Inside @BeforeTest Method");
+		// System.out.println("Inside @BeforeTest Method");
 	}
 
 	@AfterTest
 	public void afterTest() {
-		//System.out.println("Inside @AfterTest Method");
+		// System.out.println("Inside @AfterTest Method");
 
 	}
 
 	@BeforeSuite
 	public void beforeSuite() {
-		//System.out.println("Inside @BeforeSuite Method");
+		// System.out.println("Inside @BeforeSuite Method");
 	}
 
 	@AfterSuite
 	public void afterSuite() {
-		//System.out.println("Inside @AfterSuite Method");
+		// System.out.println("Inside @AfterSuite Method");
 	}
 
 	/**
@@ -154,20 +166,30 @@ public class TestNG_SAF {
 		new PropertyLoader();
 		// Load values from property file
 		String environment = PropertyLoader.loadProperty("env");
+
 		@SuppressWarnings("unused")
 		String useremail = PropertyLoader.loadProperty("user.email");
+
 		@SuppressWarnings("unused")
 		String username = PropertyLoader.loadProperty("user.username");
+
 		@SuppressWarnings("unused")
 		String password = PropertyLoader.loadProperty("user.password");
-		@SuppressWarnings("unused")
+
 		String websiteUrl = PropertyLoader.loadProperty("site.url");
+		sWebsiteUrl = websiteUrl;
+
 		String gridHubUrl = PropertyLoader.loadProperty("grid2.hub");
+
 		String browserName = PropertyLoader.loadProperty("browser.name");
+
 		String browserVersion = PropertyLoader.loadProperty("browser.version");
+
 		String browserPlatform = PropertyLoader.loadProperty("browser.platform");
+
 		@SuppressWarnings("unused")
 		String productVersion = PropertyLoader.loadProperty("product.version");
+
 		String loadCertificate = PropertyLoader.loadProperty("browser.loadCertificate");
 
 		System.out.println("Grid Hub URL>>>>:[" + gridHubUrl + "]");
@@ -187,16 +209,42 @@ public class TestNG_SAF {
 		browser.setVersion(browserVersion);
 		browser.setPlatform(browserPlatform);
 
+		
+		String proxyServerUrl = PropertyLoader.loadProperty("proxy.server.url");
+		String proxyServerPort = PropertyLoader.loadProperty("proxy.server.port");
+		HTTP_PROXY_URL = proxyServerUrl + ":" + proxyServerPort;
+
+		/**
+		 * Create a Proxy() Object
+		 * And initialize it 
+		 */
+		Proxy proxy = new Proxy();
+		proxy.setHttpProxy(HTTP_PROXY_URL).setFtpProxy(HTTP_PROXY_URL).setSslProxy(HTTP_PROXY_URL).setSslProxy(HTTP_PROXY_URL);
+		
+		/**
+		 * Set Browser Capabilities
+		 */
+		/*DesiredCapabilities cap = DesiredCapabilities.firefox();
+		cap.setCapability(CapabilityType.PROXY, proxy);*/
+		
+		
 		try {
 			if (loadCertificate.equals("true")) {
 				// try {
 				if (gridHubUrl == null || gridHubUrl.length() == 0) {
 					System.out.println("Launch local firefox driver");
-					newPage = new FirefoxDriver();
+					DesiredCapabilities cap = DesiredCapabilities.firefox();
+					cap.setCapability(CapabilityType.PROXY, proxy);
+					newPage = new FirefoxDriver(cap);
+					
 				} else {
 					System.out.println("Launch Remote firefox driver");
 					DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 					capabilities.setCapability("marionette", true);
+					
+					if(proxyServerUrl.length()>0) {
+						capabilities.setCapability(CapabilityType.PROXY, proxy);
+					}
 					newPage = new RemoteWebDriver(new URL(gridHubUrl), capabilities);
 				}
 
@@ -215,17 +263,14 @@ public class TestNG_SAF {
 			// newPage.quit();
 		}
 
-		
-		
-
 		pageDriver = newPage;
 
-		//pageDriver = getEventFiringWebDriver(pageDriver);
-		
-		//return newPage;
+		// pageDriver = getEventFiringWebDriver(pageDriver);
+
+		// return newPage;
 
 	}
-	
+
 	@SuppressWarnings("unused")
 	private WebDriver getEventFiringWebDriver(WebDriver webDriver) {
 		EventFiringWebDriver eventDriver = new EventFiringWebDriver(webDriver);
