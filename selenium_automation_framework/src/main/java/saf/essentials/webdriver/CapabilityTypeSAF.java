@@ -4,6 +4,14 @@ import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+/**
+ * This class is Wrapper for CapabilityType class 
+ * This included methods for setting , enabling and disabling Capabilities
+ *  
+ *
+ * @author Panchdev Chauhan
+ *
+ */
 public class CapabilityTypeSAF {
 
 	static void setBrowserName(DesiredCapabilities capability, String sBrowserName) {
