@@ -34,18 +34,18 @@ public abstract class PageJavaScriptAndAjaxActions extends ConfigurationAndRepor
 	/**
 	 * Waits until there is no Ajax calls in progress
 	 *
-	 * @param numberAjaxCount
+	 * @param expectedAjaxCount
 	 */
-	public final void waitForAjax(int numberAjaxCount) {
+	public final void waitForAjax(int expectedAjaxCount) {
 		JavascriptExecutor js = (JavascriptExecutor) pageDriver;
 		for (int seconds = 1; seconds <= WAIT_FOR_TIME_1; seconds++) {
 			try {
 				int actualAjaxCount = new Integer(js.executeScript("return jQuery.active").toString()).intValue();
 				if (ENABLE_DEBUG_MESSAGES) {
 					System.out.println(
-							"AJAX COUNT: [ACTUAL:" + actualAjaxCount + "]<>[EXPECTED:" + numberAjaxCount + "]");
+							"AJAX COUNT: [ACTUAL:" + actualAjaxCount + "]<>[EXPECTED:" + expectedAjaxCount + "]");
 				}
-				if (actualAjaxCount == numberAjaxCount) {
+				if (actualAjaxCount == expectedAjaxCount) {
 					// pause(1);
 					//CustomizedTimeOuts.pauseMilis(100);
 					break;
